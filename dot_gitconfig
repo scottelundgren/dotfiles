@@ -1,0 +1,71 @@
+[alias]
+	br = branch
+	ci = commit
+	cleanup = !git gc && git remote prune origin
+	cm = commit -am
+	co = checkout
+	dump = cat-file -p
+	fork = remote add -f
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	last = log -1 HEAD
+	latest-tag = tag —sort=v:refname
+	lc = log ORIG_HEAD.. --stat --no-merges
+	lf = log --pretty=fuller
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lp = log -p
+	st = status
+	type = cat-file -t
+	undo = reset --hard
+	unstage = reset HEAD --
+	who = shortlog -n -s --no-merges
+[color]
+	ui = true
+[color "branch"]
+	current = blue reverse
+	local = blue
+	remote = green
+[color "diff"]
+	commit = yellow bold
+	frag = magenta bold
+	meta = blue bold
+	new = green bold
+	old = red bold
+	whitespace = red reverse
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "status"]
+	added = blue
+	changed = green
+	untracked = cyan
+[commit]
+	template = ~/.gitmessage
+[core]
+	autocrlf = input
+	editor = code --wait
+	excludesfile = /Users/scott.lundgren/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	safecrlf = true
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[credential]
+	helper = manager
+#[credential "https://dev.azure.com"]
+#	useHttpPath = true
+[credential "https://dev.azure.com"]
+[credential "https://git-codecommit.us-east-1.amazonaws.com"]
+	provider = generic
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[init]
+    defaultBranch = main
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	email = me@scottelundgren.com
+	name = Scott Lundgren
+[push]
+	default = current
