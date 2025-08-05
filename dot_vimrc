@@ -1,0 +1,24 @@
+colorscheme ir_black            " set theme in ./vim/colors folder
+packadd chezmoi.vim             " load before filetype on + other plugins
+filetype plugin indent on       " load file type plugins + indentation
+syntax enable                   " this is needed to see syntax
+set background=light            " makes it easier to read with black background
+set backspace=indent,eol,start  " backspace through everything in insert mode
+set encoding=utf-8
+set hlsearch               " highlight searches
+set ignorecase             " ignore case while searching
+set incsearch              " do incremental searching
+"set invlist                " show invisible characters
+set ls=2                   " allways show status line
+set nocompatible           " choose no compatibility with legacy vi
+set nowrap                 " don't wrap lines
+set number                 " put numbers on side
+set paste                  " no extra characters on paste
+set ruler                  " show the cursor position all the time
+set showcmd                " display incomplete commands
+set smartcase              " ... unless they contain at least one capital letter
+set tabstop=4 shiftwidth=4 " a tab is four spaces
+set t_Co=256               " show 256 colors
+set visualbell t_vb=       " turn off error beep/flash
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
